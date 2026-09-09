@@ -14,7 +14,7 @@ disable-model-invocation: true
 
 编排器。自己不写公式、不写长文。逐节点调用模型技能，读边条件。
 
-必读：[docs/GRAPH.md](../../docs/GRAPH.md)、[docs/LOOP.md](../../docs/LOOP.md)、[docs/STATE.md](../../docs/STATE.md)。
+必读：[docs/GRAPH.md](../../docs/GRAPH.md)、[docs/LOOP.md](../../docs/LOOP.md)、[docs/STATE.md](../../docs/STATE.md)。赛期排期见 [references/schedule.md](references/schedule.md)。
 
 ## 何时使用
 
@@ -37,6 +37,7 @@ disable-model-invocation: true
 3. 否则按 GRAPH 主图前进。失败边优先于前进边。
 4. 小问 ≥2 且已 `assumptions_locked`：N6–N8 可按小问串行（默认）或在用户允许时并行；并行前冻结 `assumptions` 与 `symbols`。
 5. 每完成一节点，向用户输出一行：`节点 <name> status=<新> 失败=<n>`。
+6. 若在赛期：按 schedule.md 提醒当前阶段该收什么。不要因为临近截止而跳过 `grill-problem` 或三大检验，也不要把未跑出的数写进摘要。
 
 ## 验收
 
