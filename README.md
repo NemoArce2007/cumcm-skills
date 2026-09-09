@@ -51,11 +51,11 @@ npx skills add NemoArce2007/cumcm-skills
 
 对于谁先谁后的顺序问题，条件写在 [docs/GRAPH.md](docs/GRAPH.md)。某个 skill 怎样才算跑完，看它自己的「验收」一节；共同的停止规则在 [docs/LOOP.md](docs/LOOP.md)。
 
-其中有四个 skill 只能由你手动触发：`ask-cumcm`、`setup-cumcm-skills`、`contest-run`、`grill-problem`。其余的你也可以手动触发；但是 Agent 在相应的阶段会自己去判断是否使用，它们不会随意调用你已经安装的其它 skills。
+其中有四个 skill 只能由你手动触发：`ask-cumcm`、`setup-cumcm-skills`、`contest-run`、`grill-problem`。其余的你也可以手动触发；Agent 走到对应阶段时会自己去读。四个手动技能之间不要互相调用，但可以调用模型技能。
 
 ## 它是如何工作的？
 
-当你开口之后，Agent 只走三条路里的一条：已经确定就只跑那一个；说不清就推荐一个然后停下来；要从头交卷就按主图往下走。
+当你开口之后，Agent 只走三条路里的一条：已经指明 skill 就只跑那一个；说不清就推荐一个然后停下来；要从头交卷就按主图往下走。
 
 ```mermaid
 flowchart TD
@@ -102,19 +102,19 @@ flowchart LR
   v -->|有未通过的| d
 ```
 
-技能分两种。左边四个只能你来手动触发；右边那些你也可以手动触发，`contest-run` 运行那一段时会它自己会判断是否要运行。
+技能分两种。上面四个只能你来手动触发；下面那些你也可以手动触发，`contest-run` 走到那一段时它自己会判断是否要运行。
 
 ```mermaid
-flowchart LR
+flowchart TB
   subgraph L["只能你来手动触发"]
-    direction TB
+    direction LR
     ask["ask-cumcm"]
     setup["setup-cumcm-skills"]
     run["contest-run"]
     grill["grill-problem"]
   end
-  subgraph R["你也可以手动触发，contest-run 运行那一段时会它自己会判断是否要运行"]
-    direction TB
+  subgraph R["其余也可手动触发"]
+    direction LR
     r1["拆题选型"]
     r2["数据到出图"]
     r3["论文到提交"]
