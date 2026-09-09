@@ -63,7 +63,7 @@ project/
 ├── data/raw/  data/processed/
 ├── src/  scripts/  configs/
 ├── results/figures/  results/tables/  results/logs/
-├── paper/                  # 论文源与导出
+├── paper/                  # 论文源与导出（latex/ 或 Word 大纲，来自 paper-write/assets）
 └── support/                # 支撑材料待打包内容
 ```
 

@@ -99,6 +99,7 @@
       "type": "object",
       "properties": {
         "path": { "type": "string" },
+        "engine": { "enum": ["latex", "word"] },
         "body_pages": { "type": "integer" },
         "abstract_fits_one_page": { "type": "boolean" },
         "has_toc": { "type": "boolean" }

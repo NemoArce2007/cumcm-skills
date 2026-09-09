@@ -84,6 +84,19 @@ flowchart TD
 | review → comp | 无致命项 |
 | comp → shippable | 声明已写；若用了 AI 则详情 PDF 草稿齐 |
 
+## 和 72 小时怎么对齐
+
+这不是新节点，只是排期。窗口以当年 mcm.edu.cn 通知为准。细则在 `skills/contest-run/references/schedule.md`。
+
+| 习惯叫法 | 建议落到的技能 |
+| --- | --- |
+| 开赛当晚定方向 | setup → grill → brief → classify → select |
+| 次日出结果 | data → assume → build → compute → validate → chart |
+| 第三天成论文 | paper-write → academic-voice |
+| 截止日检查提交 | award-review → compliance-ai |
+
+某一问卡死就简化后继续，不要停在 `model-build`。临近截止也不能跳验收。
+
 ## 共享状态
 
 路径：赛题工作区根目录 `contest-state.json`。字段见 [STATE.md](STATE.md) 与 `templates/contest-state.json`。

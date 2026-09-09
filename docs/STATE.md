@@ -18,7 +18,8 @@
 | `data.*` | data-prep | compute-impl |
 | `assumptions`, `symbols` | assumption-set | build, paper |
 | `code.*` | compute-impl | validate, compliance |
-| `paper.*` | paper-write, academic-voice | review, compliance |
+| `paper.engine` | setup；paper-write 可补 | paper-write |
+| `paper.*`（其余） | paper-write, academic-voice | review, compliance |
 | `ai_use.*` | 各节点追加用途；compliance-ai 定稿 | compliance, review |
 
 ## status 枚举（顺序）

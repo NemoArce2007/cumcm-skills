@@ -32,7 +32,8 @@ disable-model-invocation: true
 2. 创建：`problem/` `data/raw/` `data/processed/` `src/` `scripts/` `configs/` `results/figures/` `results/tables/` `results/logs/` `paper/` `support/`。
 3. 若无 `contest-state.json`，按本仓库 `templates/contest-state.json` 的字段写出最小实例：`schema_version=0.1.0`，`status=uninitialized`，`problems=[]`。
 4. 确保赛题仓库 `.gitignore` 含 `.env`、身份类文件；提醒用户不要把 `problem/` 推到公开 remote。
-5. 问三项（缺一不可，可短答）：年份、题号（A/B/C…）、论文语言（zh/en）。写入 `contest.*`。
+5. 问四项（可短答）：年份、题号（A/B/C…）、论文语言（zh/en）、论文引擎（`latex` / `word`）。前三项写入 `contest.*`，引擎写入 `paper.engine`。
+6. 若 `paper/` 下还没有稿：在 cwd、`.agents/skills`、`.claude/skills` 里找 `paper-write/assets/`，按引擎复制到 `paper/latex/` 或 `paper/word-outline.md`。找不到就写 `paper/README.md`，让用户从本技能包的 `paper-write/assets/` 拷。不要覆盖已有 `.tex` / `.docx`。
 
 ## 验收
 
@@ -43,7 +44,7 @@ disable-model-invocation: true
 
 ## 输出
 
-写入 `contest.*`（用户已答部分）；`status` 仍为 `uninitialized` 直到 grill 锁定题目。
+写入 `contest.*`（用户已答部分）和 `paper.engine`（若已选）。`status` 仍为 `uninitialized` 直到 grill 锁定题目。
 
 ## 下一跳
 
