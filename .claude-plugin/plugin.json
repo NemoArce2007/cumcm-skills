@@ -1,0 +1,8 @@
+{
+  "name": "cumcm-skills",
+  "version": "0.1.0",
+  "description": "CUMCM（全国大学生数学建模竞赛）技能包：读题、选型、求解、检验、写作、合规、终审。按 contest-run 图编排，节点内部用 loop 验收。",
+  "author": {
+    "name": "CUMCM Skills"
+  }
+}

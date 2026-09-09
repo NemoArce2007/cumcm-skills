@@ -1,0 +1,117 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "CUMCMContestState",
+  "description": "赛题工作区共享状态。每个技能只读写自己声明的字段，禁止覆盖未声明字段。",
+  "type": "object",
+  "required": ["schema_version", "contest", "status", "problems"],
+  "properties": {
+    "schema_version": { "const": "0.1.0" },
+    "contest": {
+      "type": "object",
+      "required": ["year", "problem_id", "language"],
+      "properties": {
+        "year": { "type": "integer" },
+        "problem_id": { "type": "string", "description": "A/B/C/D/E 等" },
+        "language": { "enum": ["zh", "en"] },
+        "deadline": { "type": "string" }
+      }
+    },
+    "status": {
+      "enum": [
+        "uninitialized",
+        "problem_locked",
+        "classified",
+        "model_selected",
+        "data_ready",
+        "assumptions_locked",
+        "model_built",
+        "solved",
+        "validated",
+        "charts_ready",
+        "paper_drafted",
+        "voice_checked",
+        "reviewed",
+        "compliance_ready",
+        "shippable"
+      ]
+    },
+    "gate_failures": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["node", "check", "evidence"],
+        "properties": {
+          "node": { "type": "string" },
+          "check": { "type": "string" },
+          "evidence": { "type": "string" },
+          "next": { "type": "string" }
+        }
+      }
+    },
+    "problems": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "goal", "type"],
+        "properties": {
+          "id": { "type": "string" },
+          "goal": { "type": "string" },
+          "type": {
+            "enum": ["optimize", "evaluate", "predict", "mechanism", "stat", "network", "hybrid"]
+          },
+          "inputs": { "type": "array", "items": { "type": "string" } },
+          "outputs": { "type": "array", "items": { "type": "string" } },
+          "constraints": { "type": "array", "items": { "type": "string" } },
+          "traps": { "type": "array", "items": { "type": "string" } },
+          "model": {
+            "type": "object",
+            "properties": {
+              "baseline": { "type": "string" },
+              "primary": { "type": "string" },
+              "innovation": { "type": "string" },
+              "why_not": { "type": "array", "items": { "type": "string" } }
+            }
+          },
+          "results": { "type": "object" },
+          "validation": { "type": "object" }
+        }
+      }
+    },
+    "assumptions": { "type": "array" },
+    "symbols": { "type": "array" },
+    "data": {
+      "type": "object",
+      "properties": {
+        "raw_paths": { "type": "array", "items": { "type": "string" } },
+        "processed_paths": { "type": "array", "items": { "type": "string" } },
+        "quality_report": { "type": "string" }
+      }
+    },
+    "code": {
+      "type": "object",
+      "properties": {
+        "entrypoint": { "type": "string" },
+        "seed": { "type": "integer" },
+        "reproducible": { "type": "boolean" }
+      }
+    },
+    "paper": {
+      "type": "object",
+      "properties": {
+        "path": { "type": "string" },
+        "body_pages": { "type": "integer" },
+        "abstract_fits_one_page": { "type": "boolean" },
+        "has_toc": { "type": "boolean" }
+      }
+    },
+    "ai_use": {
+      "type": "object",
+      "properties": {
+        "used": { "type": "boolean" },
+        "tools": { "type": "array", "items": { "type": "string" } },
+        "purposes": { "type": "array", "items": { "type": "string" } },
+        "human_verified_core": { "type": "boolean" }
+      }
+    }
+  }
+}

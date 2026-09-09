@@ -1,0 +1,17 @@
+{
+  "name": "cumcm-skills",
+  "version": "0.1.0",
+  "private": true,
+  "description": "CUMCM（全国大学生数学建模竞赛）Agent Skills。兼容 Claude Code、Codex、Cursor、TRAE、OpenClaw、Hermes、DeepSeek Harness 等 SKILL.md 客户端。",
+  "type": "module",
+  "license": "MIT",
+  "scripts": {
+    "validate": "node scripts/validate-skills.mjs"
+  },
+  "keywords": [
+    "cumcm",
+    "mathematical-modeling",
+    "agent-skills",
+    "skills"
+  ]
+}
