@@ -3,6 +3,7 @@
 这是应对全国大学生数学建模竞赛（CUMCM，Contemporary Undergraduate Mathematical Contest in Modeling）的一套 skills 文件，把它安装到你的 Agent 后，你告诉 Agent 现在卡在哪一步，它会按对应技能做完那一步。
 
 适用 Agent 包括但不限于：
+
 - Claude Code
 - Codex
 - Cursor
@@ -17,17 +18,61 @@
 
 更多备赛资料：https://pan.quark.cn/s/daa062665609
 
-## 安装
+## 安装 CUMCm Skills
+
+### 1.安装 Node.js
+
+#### macOS
+
+打开“终端”，运行：
+
+```bash
+brew install node
+```
+
+安装过程中，Homebrew 可能会先自动更新。出现 `Auto-updating Homebrew...` 属于正常现象，请等待安装完成。
+
+#### Windows
+
+打开 **Windows Terminal**、**PowerShell** 或 **命令提示符（CMD）**，运行：
+
+```powershell
+winget install --id OpenJS.NodeJS.LTS -e
+```
+
+安装完成后，请关闭并重新打开终端，使环境变量生效。
+
+如果系统提示无法识别 `winget`，请前往 [Node.js 官网](https://nodejs.org/en/download) 下载并安装 **LTS** 版本。
+
+### 2. 安装 CUMCM Skills
+
+Node.js 安装完成后，运行：
 
 ```bash
 npx skills add NemoArce2007/cumcm-skills
 ```
 
+安装过程中，终端有时会询问是否继续操作；确认提示内容无误后，输入 `y` 并按回车即可。
+
+### 3. 选择Skills
+
+出现 `Select skills to install` 界面后，使用键盘的 `↑`、`↓` 方向键移动光标，按 `Space`（空格键）勾选或取消勾选需要安装的 Skills，选择完成后按 `Enter`（回车键）确认。
+
+完成 Skills 选择后，安装程序会显示常用的 Agent；如果列表中没有你使用的 Agent，可以在 **Additional agents** 区域继续查找并勾选。
+
 在你和 Agent 交互中记得把 `setup-cumcm-skills` 勾上。各 Agent 会把文件放哪里，请见 [docs/INSTALL.md](docs/INSTALL.md)。
 
-装完后请切换到**赛题目录**再说「运行 setup-cumcm-skills」。这个仓库是 skills 源，不是你交论文的 workspace。
+### 4. 在赛题目录中初始化
 
-当然，如果你足够懒的话，你可以直接让你的 Agent 帮你安装，并教你使用。
+安装完成后，请切换到**赛题目录**，再向 Agent 输入：
+
+```text
+运行 setup-cumcm-skills
+```
+
+> 注意：本仓库仅作为 Skills 源，不是存放赛题、代码或论文的工作目录。
+
+> 当然，如果你足够懒的话，你可以直接让你的 Agent 帮你安装，并教你使用。
 
 ## 怎么用
 
@@ -35,19 +80,19 @@ npx skills add NemoArce2007/cumcm-skills
 
 不知道该开哪个，对 Agent 说 `ask-cumcm`。它只会推荐一个，然后停下来。
 
-| 你在干什么 | 开这个 |
-| --- | --- |
-| 不确定下一步 | `ask-cumcm` |
-| 赛题目录还是空的 | `setup-cumcm-skills` |
-| 从读题做到提交包 | `contest-run` |
-| 题意对不上、附件找不到 | `grill-problem` |
-| 拆小问、定题型、选模型 | `problem-brief` → `problem-classify` → `model-select` |
-| 数据、假设、公式、代码 | `data-prep` → `assumption-set` → `model-build` → `compute-impl` |
-| 误差、灵敏度、稳健性，然后出图 | `model-validate` → `chart-style` |
-| 写正文或摘要 | `paper-write` |
-| 删套话、把数字补回段落 | `academic-voice` |
-| 按评委标准过一遍 | `award-review` |
-| AI 声明、支撑材料清单 | `compliance-ai` |
+| 你在干什么                     | 开这个                                                          |
+| ------------------------------ | --------------------------------------------------------------- |
+| 不确定下一步                   | `ask-cumcm`                                                     |
+| 赛题目录还是空的               | `setup-cumcm-skills`                                            |
+| 从读题做到提交包               | `contest-run`                                                   |
+| 题意对不上、附件找不到         | `grill-problem`                                                 |
+| 拆小问、定题型、选模型         | `problem-brief` → `problem-classify` → `model-select`           |
+| 数据、假设、公式、代码         | `data-prep` → `assumption-set` → `model-build` → `compute-impl` |
+| 误差、灵敏度、稳健性，然后出图 | `model-validate` → `chart-style`                                |
+| 写正文或摘要                   | `paper-write`                                                   |
+| 删套话、把数字补回段落         | `academic-voice`                                                |
+| 按评委标准过一遍               | `award-review`                                                  |
+| AI 声明、支撑材料清单          | `compliance-ai`                                                 |
 
 对于谁先谁后的顺序问题，条件写在 [docs/GRAPH.md](docs/GRAPH.md)。某个 skill 怎样才算跑完，看它自己的「验收」一节；共同的停止规则在 [docs/LOOP.md](docs/LOOP.md)。
 
